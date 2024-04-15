@@ -64,9 +64,21 @@ def selection_sort_direction(seznam, direction="V"):
 
 def bubble_sort(seznam):
     for i in range(len(seznam)-1):
-        while seznam[i] > seznam[i+1]:
-            seznam[i], seznam[i+1] = seznam[i+1], seznam[i]
+        for j in range(len(seznam)-1-i):
+            while seznam[j] > seznam[j+1]:
+                seznam[j], seznam[j+1] = seznam[j+1], seznam[j]
+
+    return seznam
+
+
+# toto je úplně celý můj nápad :-D
+def bubble_sort2(seznam):
+    for i in range(len(seznam)-1):
+        initial = i
+        while seznam[i] > seznam[i + 1]:
+            seznam[i], seznam[i + 1] = seznam[i + 1], seznam[i]
             i += 1
+        i = initial
 
     return seznam
 
@@ -81,6 +93,8 @@ def main():
     print(selection2)
     bubble = bubble_sort(data['series_3'])
     print(bubble)
+    bubble2 = bubble_sort2(data['series_3'])
+    print(bubble2)
 
 
 if __name__ == '__main__':
