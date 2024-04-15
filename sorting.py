@@ -39,12 +39,34 @@ def selection_sort(seznam):
     return seznam
 
 
+def selection_sort_direction(seznam, direction="V"):
+    if direction == "V":
+        for i in range(len(seznam)):
+            min_idx = i
+            for j in range(i + 1, len(seznam)):
+                if seznam[min_idx] > seznam[j]:
+                    min_idx = j
+            seznam[i], seznam[min_idx] = seznam[min_idx], seznam[i]
+
+    if direction == "S":
+        for i in range(len(seznam)):
+            max_idx = i
+            for j in range(i + 1, len(seznam)):
+                if seznam[max_idx] < seznam[j]:
+                    max_idx = j
+            seznam[i], seznam[max_idx] = seznam[max_idx], seznam[i]
+
+    return seznam
+
+
 def main():
     file_name = 'numbers.csv'
     data = read_data(file_name)
     print(data)
     selection = selection_sort(data['series_1'])
     print(selection)
+    selection2 = selection_sort_direction(data['series_2'], "S")
+    print(selection2)
 
 
 if __name__ == '__main__':
