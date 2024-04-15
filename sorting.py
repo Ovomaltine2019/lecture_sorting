@@ -94,7 +94,11 @@ def insertion_sort(seznam):
             seznam[j + 1] = seznam[j]
             j -= 1
         seznam[j + 1] = key
+
     return seznam
+
+# nejlepší scénář: O(n) (O(n*1))
+# nejhorší scénář: O(n^2) (O([n(n-1)]/2))
 
 
 # metoda sort() - meni poradi prvku primo v promenne
@@ -119,21 +123,25 @@ list_of_words2 = sorted(list_of_words, key=str.lower)
 print(list_of_words)
 print(list_of_words2)
 
-# def main():
-#     file_name = 'numbers.csv'
-#     data = read_data(file_name)
-#     print(data)
-#     selection = selection_sort(data['series_1'])
-#     print(selection)
-#     selection2 = selection_sort_direction(data['series_1'], "S")
-#     print(selection2)
-#     bubble = bubble_sort(data['series_3'])
-#     print(bubble)
-#     bubble2 = bubble_sort2(data['series_3'])
-#     print(bubble2)
-#     insertion = insertion_sort(data['series_2'])
-#     print(insertion)
-#
-#
-# if __name__ == '__main__':
-#     main()
+
+def main():
+    file_name = 'numbers.csv'
+    data = read_data(file_name)
+    # print(data)
+    selection = selection_sort(data['series_1'])
+    print("Data seřazená pomocí selection sort: ")
+    print(selection)
+    selection2 = selection_sort_direction(data['series_1'], "S")
+    print(selection2)
+    bubble = bubble_sort(data['series_3'])
+    print("Data seřazená pomocí bubble sort: ")
+    print(bubble)
+    bubble2 = bubble_sort2(data['series_3'])
+    print(bubble2)
+    insertion = insertion_sort(data['series_2'])
+    print("Data seřazená pomocí insertion sort: ")
+    print(insertion)
+
+
+if __name__ == '__main__':
+    main()
