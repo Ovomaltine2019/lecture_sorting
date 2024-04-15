@@ -41,7 +41,7 @@ def selection_sort(seznam):
 
 def selection_sort_direction(seznam, direction="V"):
     if direction == "V":
-        for i in range(len(seznam)):
+        for i in range(len(seznam)): # teoreticky můžu přidat -1, protože poslední prvek budu mít už ve správným pořadí
             min_idx = i
             for j in range(i + 1, len(seznam)):
                 if seznam[min_idx] > seznam[j]:
@@ -58,6 +58,18 @@ def selection_sort_direction(seznam, direction="V"):
 
     return seznam
 
+# nejlepší scénář: "S": O(n*(n-1)) = O(n^2-n) = O(n^2) "V": O(n^2)
+# nejhorší scénář: "S": O(n^2) "V": O(n^2)
+
+
+def bubble_sort(seznam):
+    for i in range(len(seznam)-1):
+        while seznam[i] > seznam[i+1]:
+            seznam[i], seznam[i+1] = seznam[i+1], seznam[i]
+            i += 1
+
+    return seznam
+
 
 def main():
     file_name = 'numbers.csv'
@@ -67,6 +79,8 @@ def main():
     print(selection)
     selection2 = selection_sort_direction(data['series_2'], "S")
     print(selection2)
+    bubble = bubble_sort(data['series_3'])
+    print(bubble)
 
 
 if __name__ == '__main__':
