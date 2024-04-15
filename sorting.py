@@ -65,7 +65,7 @@ def selection_sort_direction(seznam, direction="V"):
 def bubble_sort(seznam):
     for i in range(len(seznam)-1):
         for j in range(len(seznam)-1-i):
-            while seznam[j] > seznam[j+1]:
+            if seznam[j] > seznam[j+1]:
                 seznam[j], seznam[j+1] = seznam[j+1], seznam[j]
 
     return seznam
@@ -82,8 +82,8 @@ def bubble_sort2(seznam):
 
     return seznam
 
-# nejlepší scénář.
-# nejhorší scénář:
+# nejlepší scénář: O(n)
+# nejhorší scénář: O(n^2)
 
 
 def insertion_sort(seznam):
@@ -97,21 +97,43 @@ def insertion_sort(seznam):
     return seznam
 
 
-def main():
-    file_name = 'numbers.csv'
-    data = read_data(file_name)
-    print(data)
-    selection = selection_sort(data['series_1'])
-    print(selection)
-    selection2 = selection_sort_direction(data['series_1'], "S")
-    print(selection2)
-    bubble = bubble_sort(data['series_3'])
-    print(bubble)
-    bubble2 = bubble_sort2(data['series_3'])
-    print(bubble2)
-    insertion = insertion_sort(data['series_2'])
-    print(insertion)
+# metoda sort() - meni poradi prvku primo v promenne
+my_list = [3, 8, 1, 2, 32]
+
+my_list.sort()
+print(my_list)
+
+# funkce sorted() - vytvari novy serazeny seznam
+my_list = [3, 8, 1, 2, 32]
+
+sorted_list = sorted(my_list)
+print(sorted_list)
+reverse_sorted_list = sorted(my_list, reverse=True)
+print(reverse_sorted_list)
 
 
-if __name__ == '__main__':
-    main()
+list_of_words = ["MOO", "meeeoow", "woof", "BZZZZZZ"]
+list_of_words = sorted(list_of_words, key=len)
+list_of_words2 = sorted(list_of_words, key=str.lower)
+
+print(list_of_words)
+print(list_of_words2)
+
+# def main():
+#     file_name = 'numbers.csv'
+#     data = read_data(file_name)
+#     print(data)
+#     selection = selection_sort(data['series_1'])
+#     print(selection)
+#     selection2 = selection_sort_direction(data['series_1'], "S")
+#     print(selection2)
+#     bubble = bubble_sort(data['series_3'])
+#     print(bubble)
+#     bubble2 = bubble_sort2(data['series_3'])
+#     print(bubble2)
+#     insertion = insertion_sort(data['series_2'])
+#     print(insertion)
+#
+#
+# if __name__ == '__main__':
+#     main()
