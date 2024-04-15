@@ -82,6 +82,20 @@ def bubble_sort2(seznam):
 
     return seznam
 
+# nejlepší scénář.
+# nejhorší scénář:
+
+
+def insertion_sort(seznam):
+    for i in range(1, len(seznam)):
+        key = seznam[i]
+        j = i - 1
+        while j >= 0 and seznam[j] > key:
+            seznam[j + 1] = seznam[j]
+            j -= 1
+        seznam[j + 1] = key
+    return seznam
+
 
 def main():
     file_name = 'numbers.csv'
@@ -89,12 +103,14 @@ def main():
     print(data)
     selection = selection_sort(data['series_1'])
     print(selection)
-    selection2 = selection_sort_direction(data['series_2'], "S")
+    selection2 = selection_sort_direction(data['series_1'], "S")
     print(selection2)
     bubble = bubble_sort(data['series_3'])
     print(bubble)
     bubble2 = bubble_sort2(data['series_3'])
     print(bubble2)
+    insertion = insertion_sort(data['series_2'])
+    print(insertion)
 
 
 if __name__ == '__main__':
